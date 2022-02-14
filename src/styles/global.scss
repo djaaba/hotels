@@ -1,0 +1,11 @@
+$primaryColor: darkcyan;
+$secondaryColor: pink;
+
+html{
+    font-family: Montserrat;
+}
+
+h1{
+    color: $secondaryColor;
+    background: url("../images/PNG.png");
+}
