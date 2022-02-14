@@ -18,6 +18,11 @@ module.exports = {
         clean: true,
     },
     devtool: 'source-map',
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        },
+    },
     plugins: [
         new MiniSssExtractPlugin({
             filename: '[name].[contenthash].css'
