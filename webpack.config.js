@@ -13,9 +13,11 @@ console.log(mode + " mode")
 module.exports = {
     mode: mode,
     output: {
+        filename: '[name].[contenthash].js',
         assetModuleFilename: "assets/[hash][ext][query]",
         clean: true,
     },
+    devtool: 'source-map',
     plugins: [
         new MiniSssExtractPlugin({
             filename: '[name].[contenthash].css'
@@ -67,6 +69,16 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             }
         ],
     }
