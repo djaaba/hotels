@@ -1,7 +1,7 @@
 import '../../blocks/date-dropdown/date-dropdown';
 import '../../blocks/select-counter/select-counter';
 import '../../blocks/header/header';
-import './main.scss';
+import './index.scss';
 import 'material-design-icons/iconfont/material-icons.css';
 
 const imageUrls = [require('../../assets/img/green-room.jpg'), require('../../assets/img/blue-chair.jpg'), require('../../assets/img/sofa.jpg')];
