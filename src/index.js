@@ -1,6 +1,8 @@
-import './styles/index.scss';
-import $ from 'jquery';
+import './pages/main/main.js';
+import './pages/registration/registration.js';
+import './pages/room/room.js';
+import './pages/signin/signin.js';
+import './pages/search/search.js';
 
-$('.block').html('jQuery is good');
 
-console.log(2);
+import './index.scss';

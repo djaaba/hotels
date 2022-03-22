@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniSssExtractPlugin = require('mini-css-extract-plugin')
-
+const webpack = require('webpack');
+const globule = require('globule');
+const paths = globule.find(['src/pages/**/*.pug']);
 
 let mode = 'development'
 
@@ -27,11 +29,16 @@ module.exports = {
         new MiniSssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
-        new HtmlWebpackPlugin({
-            // template: "./src/index.html",
-            template: "./src/index.pug",
-            inject: true
-        })
+        ...paths.map((path) => {
+            return new HtmlWebpackPlugin({
+                template: path,
+                filename: `${path.split(/\/|.pug/).splice(-2, 1)}.html`,
+            })
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
     ],
     module: {
         rules: [
@@ -68,7 +75,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
                 type: 'asset/resource',
             },
             {
